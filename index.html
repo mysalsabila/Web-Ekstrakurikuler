@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMKN 72 JAKARTA - Pendaftaran Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top d-none">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img src="logo.jpg" alt="Logo" width="40" height="40" class="me-2 bg-white rounded-circle p-1 shadow-sm">
+                SMKN 72 JAKARTA
+            </a>
+            <button id="btnLogout" class="btn btn-danger btn-sm rounded-pill px-4 shadow-sm">
+                Logout <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="authContainer" class="main-container d-flex align-items-center justify-content-center">
+        <div class="glass-card p-4 p-md-5 shadow-lg">
+            
+            <div class="text-center mb-4">
+                <div class="mb-3">
+                    <img src="logo.jpg" alt="Logo Sekolah" width="80" height="80" class="bg-white rounded-circle p-2 shadow-sm">
+                </div>
+                <h3 class="fw-bold text-primary brand-title">SMKN 72 JAKARTA</h3>
+                <p class="text-muted small">Platform Ekstrakurikuler Digital</p>
+            </div>
+
+            <div id="loginSection">
+                <h5 class="mb-3 fw-bold text-dark border-bottom pb-2">Masuk Akun</h5>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small text-muted">Email Sekolah / Siswa</label>
+                        <input type="email" id="email" class="form-control bg-light border-0 py-2" placeholder="Contoh: siswa@gmail.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small text-muted">Password</label>
+                        <div class="input-group">
+                            <input type="password" id="password" class="form-control bg-light border-0 py-2" placeholder="Masukkan password" required>
+                            <button class="btn btn-light border-0" type="button" id="toggleLoginPass">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm rounded-3 mt-3">MASUK SEKARANG</button>
+                </form>
+                <div class="text-center mt-3">
+                    <small>Belum punya akun? <a href="#" id="btnToRegister" class="text-primary fw-bold">Daftar Siswa Baru</a></small>
+                </div>
+            </div>
+
+            <div id="registerSection" class="d-none">
+                <h5 class="mb-3 fw-bold text-dark border-bottom pb-2">Registrasi Siswa</h5>
+                <form id="registerAccountForm">
+                    
+                    <div class="row g-2 mb-2">
+                        <div class="col-6">
+                            <label class="form-label fw-semibold small text-muted">Email Aktif</label>
+                            <input type="email" id="regEmail" class="form-control bg-light border-0" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-semibold small text-muted">Password</label>
+                            <div class="input-group">
+                                <input type="password" id="regPassword" class="form-control bg-light border-0" placeholder="Min 6 digit" required>
+                                <button class="btn btn-light border-0" type="button" id="toggleRegPass">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label fw-semibold small text-muted">Nama Lengkap Siswa</label>
+                        <input type="text" id="regNama" class="form-control bg-light border-0" placeholder="Sesuai Absen" required>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label fw-semibold small text-muted">NIS</label>
+                            <input type="number" id="regNis" class="form-control bg-light border-0" placeholder="Nomor Induk" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-semibold small text-muted">Kelas</label>
+                            <select id="regKelas" class="form-select bg-light border-0" required>
+                                <option value="">Pilih...</option>
+                                <option value="X">Kelas X</option>
+                                <option value="XI">Kelas XI</option>
+                                <option value="XII">Kelas XII</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-bold shadow-sm rounded-3 mt-3">BUAT AKUN</button>
+                </form>
+                <div class="text-center mt-3">
+                    <small>Sudah punya akun? <a href="#" id="btnToLogin" class="text-primary fw-bold">Login Disini</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="siswaSection" class="container mt-5 pt-5 d-none">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0 mb-3">
+                    <div class="card-body">
+                        <h4>Halo, <span id="siswaNameDisplay" class="fw-bold text-primary">Siswa</span>! 👋</h4>
+                        <p class="text-muted">Silakan pilih ekstrakurikuler favoritmu.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-white fw-bold border-0">📋 Formulir Pendaftaran</div>
+                            <div class="card-body">
+                                <form id="daftarEkskulForm">
+                                    <div class="mb-3">
+                                        <select id="pilihanEkskul" class="form-select bg-light border-0" required>
+                                            <option value="">-- Sedang Memuat --</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100 fw-bold">Daftar Sekarang</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-white fw-bold border-0">📢 Status Kamu</div>
+                            <div class="card-body text-center d-flex align-items-center justify-content-center">
+                                <div id="statusPendaftaran">
+                                    <p class="text-muted">Belum mendaftar.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="adminSection" class="container mt-5 pt-5 d-none">
+        <div class="card shadow border-0 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold text-dark">Dashboard Admin</h3>
+                <div>
+                    <button onclick="exportToExcel()" class="btn btn-success btn-sm"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
+                    <button onclick="exportToPDF()" class="btn btn-danger btn-sm"><i class="bi bi-file-earmark-pdf"></i> PDF</button>
+                </div>
+            </div>
+
+            <ul class="nav nav-pills mb-3" id="adminTab" role="tablist">
+                <li class="nav-item"><button class="nav-link active rounded-pill" data-bs-toggle="pill" data-bs-target="#pendaftar-pane">Data Pendaftar</button></li>
+                <li class="nav-item"><button class="nav-link rounded-pill" data-bs-toggle="pill" data-bs-target="#kelola-pane">Kelola Ekskul</button></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="pendaftar-pane">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle" id="tabelPendaftar">
+                            <thead class="table-light">
+                                <tr><th>No</th><th>Siswa</th><th>Kelas</th><th>Ekskul</th><th>Tanggal</th><th>Aksi</th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="kelola-pane">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card bg-light border-0 p-3 shadow-sm h-100">
+                                <h6 class="fw-bold border-bottom pb-2"><i class="bi bi-plus-circle"></i> Tambah Ekskul</h6>
+                                <form id="tambahEkskulForm" class="mt-2">
+                                    <div class="mb-2">
+                                        <label class="small text-muted">Nama Ekskul</label>
+                                        <input type="text" id="namaEkskulBaru" class="form-control" placeholder="Contoh: Basket" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="small text-muted">Nama Pembina</label>
+                                        <input type="text" id="pembinaEkskul" class="form-control" placeholder="Contoh: Pak Budi" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark w-100">Simpan Data</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white py-3">
+                                    <h6 class="mb-0 fw-bold text-primary"><i class="bi bi-list-task"></i> Daftar Ekstrakurikuler Aktif</h6>
+                                    <small class="text-muted">List ekskul dan nama pembina yang tersedia</small>
+                                </div>
+                                <div class="card-body p-0">
+                                    <ul class="list-group list-group-flush" id="listMasterEkskul">
+                                        </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

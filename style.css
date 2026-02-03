@@ -1,0 +1,52 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Background Gradient Cantik */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.main-container {
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+}
+
+.brand-title {
+    letter-spacing: -0.5px;
+    color: #4a4eff;
+}
+
+/* Form Styles */
+.form-control:focus, .form-select:focus {
+    box-shadow: none;
+    border: 1px solid #4a4eff !important;
+    background-color: #fff !important;
+}
+
+.btn-primary {
+    background: #4a4eff;
+    border: none;
+}
+.btn-primary:hover {
+    background: #3b3ecc;
+}
+
+/* Dashboard Styles */
+#siswaSection, #adminSection {
+    padding-bottom: 50px;
+}
