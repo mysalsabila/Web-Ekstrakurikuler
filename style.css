@@ -1,6 +1,5 @@
 body {
     font-family: 'Poppins', sans-serif;
-    /* Background Gradient Cantik */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     color: #333;
@@ -11,7 +10,6 @@ body {
     width: 100%;
 }
 
-/* Glassmorphism Effect */
 .glass-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
@@ -22,31 +20,25 @@ body {
     transition: transform 0.3s ease;
 }
 
-.glass-card:hover {
-    transform: translateY(-5px);
-}
-
 .brand-title {
-    letter-spacing: -0.5px;
     color: #4a4eff;
 }
 
-/* Form Styles */
-.form-control:focus, .form-select:focus {
-    box-shadow: none;
-    border: 1px solid #4a4eff !important;
-    background-color: #fff !important;
+.nav-pills .nav-link.active {
+    background-color: #4a4eff;
 }
 
-.btn-primary {
-    background: #4a4eff;
-    border: none;
-}
-.btn-primary:hover {
-    background: #3b3ecc;
+canvas {
+    width: 100% !important;
+    max-height: 100%;
 }
 
-/* Dashboard Styles */
-#siswaSection, #adminSection {
-    padding-bottom: 50px;
+.table thead {
+    background-color: #f8f9fa;
+}
+
+/* Mempercantik tampilan badge total */
+#totalPendaftarText {
+    min-width: 100px;
+    text-align: center;
 }
